@@ -1,0 +1,75 @@
+---
+title: "MTh208: Worksheet 22"
+format: 
+  pdf:
+    documentclass: article
+editor: visual
+geometry: margin=1in
+header-includes:
+   - \usepackage{amsmath, amssymb, setspace}
+   - \onehalfspacing
+   - \usepackage{etoolbox} 
+   - \makeatletter 
+   - \preto{\@verbatim}{\topsep=3pt \partopsep=3pt } 
+   - \makeatother
+---
+
+## Data Ethics
+
+Imagine you are the Chief Data Scientist of the next new start-up! The start-up has come up with a wonderful new technology to tell what mood the owner of the phone is in, based on the way they're using the phone. This technology is based on studying years of data collected from phones and users, and building a statistical model.
+
+There is great potential in this new company! However, as a responsible data scientist, **you must** also think deeply about the **ethics** of the situation. The following is a data ethics checklist that we should carefully consider.
+
+[Data Ethics Checklist:\
+]{.underline}
+
+-   Have we studied how our technology can be attacked or abused?
+
+    \textcolor{blue} {How can your app be misused?}\
+
+-   Have we checked if our data are fair and representative?\
+    \textcolor{blue} {When we made the algorithm to predict mood, was our data for that representative?}\
+    \textcolor{blue} {Recall our examples of consequence of unrepresentative data?}\
+
+-   Have we studied and understood possible sources of bias in our data?\
+    \textcolor{blue} {When we made the algorithm to predict mood, could there be any bias in the data?}\
+
+-   Does our team reflect diversity of opinions, backgrounds, and kinds of thought?\
+    \textcolor{blue} {When we hire employees, are we ensuring diversity? Can we strive for diversity of gender, sexuality, religion, language, country? This is will help our product! (Of course we must also be cognizant of hiring in a that does not violate Human Resources guidelines). }\
+
+-   What kind of user consent do we need to collect to use the data?\
+    \textcolor{blue} {Are the users clearly consenting to share the data with us?}\
+
+-   Do we have a mechanism for gathering consent from users?\
+    \textcolor{blue} {Are we making it easy for the user not to read the fine print in terms of agreement?}\
+
+-   Have we explained clearly what users are consenting to?\
+    \textcolor{blue} {Do users know exactly what data is being shared?}\
+
+-   Do we have a mechanism for redress if people are harmed by the results?\
+    \textcolor{blue} {Can damage be undone?}\
+
+-   Can we shut down this software in production if it is behaving badly?\
+    \textcolor{blue} {Is there a clause in the company protocol to do this?}\
+
+-   Have we tested for fairness with respect to different user groups?\
+    \textcolor{blue} {Hiring diversity will help in this!}\
+
+-   Have we tested for disparate error rates among different user groups?\
+    \textcolor{blue} {Study to ensure we are not fooled by Simpson's Paradox!}\
+
+-   Do we test and monitor for model drift to ensure our software remains fair over time?\
+    \textcolor{blue} {As the app learns over time, does it keep performing well?}\
+
+-   Do we have a plan to protect and secure user data?\
+    \textcolor{blue} {This app in the wrong hands could wreck havoc! Are we as a company making our data and algorithm secure?}
+
+Some of the above may not apply to all data science problems. However, a careful review of the Data Ethics Checklist for all projects and problems is critical for the responsible study of data.
+
+There is thus a [Hippocratic Oath for a Data Scientist.]{.underline}
+
+In the rest of the lab, please read the following articles and carefully understand how important it is to follow ethical guidelines.\
+
+<https://medium.com/big-data-at-berkeley/things-you-need-to-know-before-you-become-a-data-scientist-a-beginners-guide-to-data-ethics-8f9aa21af742>
+
+[Hippocratic Oath](https://www.ncbi.nlm.nih.gov/books/NBK532770/)

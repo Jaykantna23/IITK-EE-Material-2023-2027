@@ -1,0 +1,100 @@
+---
+title: "MTH208: Worksheet 18"
+format: 
+  pdf:
+    documentclass: article
+editor: visual
+geometry: margin=1in
+header-includes:
+   - \usepackage{amsmath, amssymb, setspace}
+   - \onehalfspacing
+   - \usepackage{etoolbox} 
+   - \makeatletter 
+   - \preto{\@verbatim}{\topsep=3pt \partopsep=3pt } 
+   - \makeatother
+---
+
+## More `Rcpp`
+
+Using the `cppFunction()` to integrate `C++` code in `R`, is very useful. However, it does not provide easy editing and indenting. Further, it is not practical to write big C++ codes in this way. A solution to this is `sourceCpp()` function.
+
+Click on a New C++ file button, which creates a new file with C++ code that Rcpp can read. Save this file **in your working repository.**
+
+The first two lines of the C++ file will be
+
+```{r}
+#| eval: false
+
+#include <Rcpp.h>
+using namespace Rcpp;
+```
+
+Note that the hashtag before include is necessary. Since this is a C++ file, \# is not a comment. Comments in C++ are using //.
+
+Then, right before the function starts, you must write the following comment line to let `Rcpp` know that this is the main function:
+
+```{r}
+#| eval: false
+
+// [[Rcpp::export]]
+NumericVector dummy(NumericVector x){
+  return x;
+}
+```
+
+Once your file is written, in a separate `R` file, you can compile the `*.cpp` file using the `sourceCpp("*.cpp")` (this works because the file is in your working directory)
+
+```{r}
+#| eval: false
+library(Rcpp)
+sourceCpp("*.cpp") # replace * with name of file
+```
+
+Finally, you can learn about the various functions in Rcpp here: <https://teuder.github.io/rcpp4everyone_en/index.html>.
+
+For generic C++ code see here: <https://www.w3schools.com/cpp/default.asp>
+
+## Problems
+
+1.  Redo Worksheet 17 problems using `sourceCpp()`.
+
+2.  Using Section\~22 in the given Rcpp reference, redo Problem 3 in Worksheet 3. Benchmark with the solution using R.\
+    The format for the while loop is:
+
+    ```{r}
+    #| eval: false
+    int i;
+    while(i < 10){
+      ...
+      i++;
+    }
+    ```
+
+3.  Using Section\~22 in the given Rcpp reference, redo Problem 4 in Worksheet 3. Benchmark with the solution using R.\
+
+4.  As you can see while dealing with matrices in C++, it can be annoying to write loops for elementary tasks like adding matrices. The `RcppArmadillo` library in R provides matrix compatibility.\
+    \
+    However, the namespace changes: `NumericVector` becomes `vec`, `NumericMatrix` becomes `mat`. For example, finding the inner product of two vectors, the cpp file looks like
+
+    ```{r}
+    #| eval: false
+    // [[Rcpp::depends(RcppArmadillo)]]
+    #include <RcppArmadillo.h>
+    using namespace Rcpp;
+    using namespace arma;
+
+    // [[Rcpp::export]]
+    double timesTwo(arma::vec x,arma::vec y) {
+      // inner product of two vectors is a matrix
+      mat inn(1,1); 
+      inn = x.t() * y;
+      
+      // returning the first element of a 1x1 matrix
+      return inn(0);
+    }
+
+    ```
+
+    Using what you've learned here, write a C++ code using RcppArmadillo that adds two matrices and benchmark with the previous worksheet.\
+    \
+    More armadillo operations are here: <https://arma.sourceforge.net/docs.html>.
